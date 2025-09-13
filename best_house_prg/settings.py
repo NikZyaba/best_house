@@ -34,6 +34,7 @@ THIRD_PARTY_APPS = [
 
 # Приложения созданные в проекте
 LOCAL_APPS = [
+    "apps.main",
     "apps.user",
 ]
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+    <title>Get Consultation</title>
+</head>
+<body>
+    <!-- Форма должна быть внутри тега <body> -->
+    <form method="post" class="cons-form">
+        {% csrf_token %}
+
+        <!-- Поле buyer_name (Ваше имя) -->
+        <div>
+            <label for="{{ form.buyer_name.id_for_label }}">Your first name</label>
+            {{ form.buyer_name }}  <!-- Django подставит правильный input с классом и placeholder -->
+            {% if form.buyer_name.errors %}
+                <div class="error">{{ form.buyer_name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Поле phone_number (Ваш телефон) -->
+        <div>
+            <label for="{{ form.phone_number.id_for_label }}">Your phone</label>
+            {{ form.phone_number }} <!-- Здесь уже будет валидация и правильный input -->
+            {% if form.phone_number.errors %}
+                <div class="error">{{ form.phone_number.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Поле description (Описание) -->
+        <div>
+            <label for="{{ form.description.id_for_label }}">Description</label>
+            {{ form.description }} <!-- Django подставит textarea с классом и placeholder -->
+            {% if form.description.errors %}
+                <div class="error">{{ form.description.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- КНОПКА ОТПРАВКИ (обязательно!) -->
+        <button type="submit" class="btn btn-primary">Send Request</button>
+    </form>
+</body>
+</html>

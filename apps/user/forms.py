@@ -4,8 +4,8 @@ from django.contrib.auth import get_user_model, authenticate
 from django.utils.html import strip_tags
 from django.core.validators import RegexValidator
 
-
 User = get_user_model()
+
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(
@@ -29,7 +29,8 @@ class CustomUserCreationForm(UserCreationForm):
     )
     password2 = forms.CharField(
         required=True,
-        widget=forms.PasswordInput(attrs={'class': 'input-register form-control', 'placeholder': 'Confirm your password'})
+        widget=forms.PasswordInput(
+            attrs={'class': 'input-register form-control', 'placeholder': 'Confirm your password'})
     )
     marketing_consent1 = forms.BooleanField(
         required=False,
@@ -61,12 +62,13 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
-    
+
 
 class CustomUserLoginForm(AuthenticationForm):
     username = forms.CharField(
         label='Email',
-        widget=forms.TextInput(attrs={'autofocus': True, 'class': 'input-register form-control', 'placeholder': 'Your email'})
+        widget=forms.TextInput(
+            attrs={'autofocus': True, 'class': 'input-register form-control', 'placeholder': 'Your email'})
     )
     password = forms.CharField(
         label='Password',
@@ -78,13 +80,14 @@ class CustomUserLoginForm(AuthenticationForm):
         password = self.cleaned_data.get('password')
 
         if email and password:
-            self.user_cache = authenticate(self.request, username=email, password=password)  # Используйте username вместо email
+            self.user_cache = authenticate(self.request, username=email,
+                                           password=password)  # Используйте username вместо email
             if self.user_cache is None:
                 raise forms.ValidationError('Invalid email or password.')
             elif not self.user_cache.is_active:
                 raise forms.ValidationError('This account is inactive.')
         return self.cleaned_data
-    
+
 
 class CustomUserUpdateForm(forms.ModelForm):
     phone = forms.CharField(
@@ -107,39 +110,36 @@ class CustomUserUpdateForm(forms.ModelForm):
         widget=forms.EmailInput(attrs={'class': 'input-register form-control', 'placeholder': 'Your email'})
     )
 
-
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email', 'address_1', 'address_2',
                   'city', 'country', 'province', 'postal_code', 'phone')
         widgets = {
-            'email': forms.EmailInput(attrs={'class': 'input-register form-control', 
+            'email': forms.EmailInput(attrs={'class': 'input-register form-control',
                                              'placeholder': 'Your email'}),
-            'first_name': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'first_name': forms.TextInput(attrs={'class': 'input-register form-control',
                                                  'placeholder': 'Your first name'}),
-            'last_name': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'last_name': forms.TextInput(attrs={'class': 'input-register form-control',
                                                 'placeholder': 'Your last name'}),
-            'address1': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'address1': forms.TextInput(attrs={'class': 'input-register form-control',
                                                'placeholder': 'Address line 1'}),
-            'address2': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'address2': forms.TextInput(attrs={'class': 'input-register form-control',
                                                'placeholder': 'Address line 2'}),
-            'city': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'city': forms.TextInput(attrs={'class': 'input-register form-control',
                                            'placeholder': 'Your city'}),
-            'country': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'country': forms.TextInput(attrs={'class': 'input-register form-control',
                                               'placeholder': 'Your country'}),
-            'province': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'province': forms.TextInput(attrs={'class': 'input-register form-control',
                                                'placeholder': 'Your province'}),
-            'postal_code': forms.TextInput(attrs={'class': 'input-register form-control', 
+            'postal_code': forms.TextInput(attrs={'class': 'input-register form-control',
                                                   'placeholder': 'Your postal code'}),
         }
 
-    
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if email and User.objects.filter(email=email).exclude(id=self.instance.id).exists():
             raise forms.ValidationError('This email is already in use.')
         return email
-    
 
     def clean(self):
         cleaned_data = super().clean()
@@ -147,7 +147,7 @@ class CustomUserUpdateForm(forms.ModelForm):
             cleaned_data['email'] = self.instance.email
 
         for field in ['address_1', 'address_2', 'city', 'country', 'province',
-                        'postal_code', 'phone']:
+                      'postal_code', 'phone']:
             if cleaned_data.get(field):
                 cleaned_data[field] = strip_tags(cleaned_data[field])
 

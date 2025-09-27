@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/consultingform.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet">
     <title>Get Consultation</title>
 </head>
 <body>
-    <!-- Форма должна быть внутри тега <body> -->
+
     <form method="post" class="cons-form">
         {% csrf_token %}
 
         <!-- Поле buyer_name (Ваше имя) -->
         <div>
             <label for="{{ form.buyer_name.id_for_label }}">Your first name</label>
-            {{ form.buyer_name }}  <!-- Django подставит правильный input с классом и placeholder -->
+            {{ form.buyer_name }}
             {% if form.buyer_name.errors %}
                 <div class="error">{{ form.buyer_name.errors }}</div>
             {% endif %}
@@ -43,6 +43,32 @@
 
         <!-- КНОПКА ОТПРАВКИ (обязательно!) -->
         <button type="submit" class="btn btn-primary">Send Request</button>
+
     </form>
+    <script>
+        // Добавление класса loading при отправке формы
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.cons-form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', function() {
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+            });
+        });
+
+        // Плавное появление ошибок
+        const errorElements = document.querySelectorAll('.error');
+        errorElements.forEach(error => {
+            error.style.opacity = '0';
+            error.style.transform = 'translateY(-10px)';
+
+            setTimeout(() => {
+                error.style.transition = 'all 0.3s ease';
+                error.style.opacity = '1';
+                error.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
 </body>
 </html>

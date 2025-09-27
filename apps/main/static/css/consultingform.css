@@ -1,0 +1,239 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Контейнер формы */
+.cons-form {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cons-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовки и labels */
+.cons-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Поля ввода */
+.cons-form input,
+.cons-form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.cons-form input:focus,
+.cons-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.cons-form textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Группы полей */
+.cons-form div {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Кнопка отправки */
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Стили для ошибок */
+.error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 8px 12px;
+    background-color: #fee;
+    border: 1px solid #fadbd8;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.error ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для успешной валидации */
+.cons-form input:valid,
+.cons-form textarea:valid {
+    border-color: #27ae60;
+}
+
+.cons-form input:invalid:not(:focus):not(:placeholder-shown),
+.cons-form textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+/* Плейсхолдеры */
+.cons-form input::placeholder,
+.cons-form textarea::placeholder {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cons-form {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.cons-form div {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.cons-form div:nth-child(1) { animation-delay: 0.1s; }
+.cons-form div:nth-child(2) { animation-delay: 0.2s; }
+.cons-form div:nth-child(3) { animation-delay: 0.3s; }
+.cons-form div:nth-child(4) { animation-delay: 0.4s; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .cons-form {
+        padding: 30px 25px;
+        margin: 10px;
+    }
+
+    .cons-form input,
+    .cons-form textarea {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cons-form {
+        padding: 25px 20px;
+    }
+
+    .cons-form label {
+        font-size: 13px;
+    }
+}
+
+/* Дополнительные эффекты */
+.cons-form input:focus::placeholder,
+.cons-form textarea:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Иконки  */
+.cons-form div::before {
+
+}
+
+/* Loading state для кнопки */
+.btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

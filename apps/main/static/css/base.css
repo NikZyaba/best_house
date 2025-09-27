@@ -1,18 +1,17 @@
-
         /* Reset и базовые стили */
 * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
 body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             color: #2D3748;
             background-color: #FFFFFF;
         }
-        
+
         /* Шапка */
 .header {
             background: rgba(255, 255, 255, 0.95);
@@ -25,7 +24,7 @@ body {
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
 .header-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -34,7 +33,7 @@ body {
             align-items: center;
             padding: 0 20px;
         }
-        
+
 .logo {
     display: flex;
     align-items: center;
@@ -62,12 +61,12 @@ body {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
-        
+
 .nav {
             display: flex;
             gap: 30px;
         }
-        
+
 .nav-link {
             font-family: 'Montserrat', sans-serif;
             font-size: 14px;
@@ -78,18 +77,18 @@ body {
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
         }
-        
+
 .nav-link:hover {
             color: #E53E3E;
         }
-        
+
 .contact-info {
             font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             font-weight: 600;
             color: #2D3748;
         }
-        
+
         /* Герой секция */
 .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -99,7 +98,7 @@ body {
             position: relative;
             overflow: hidden;
         }
-        
+
 .hero::before {
             content: '';
             position: absolute;
@@ -110,7 +109,7 @@ body {
             background: url('{% static "images/pattern.png" %}') repeat;
             opacity: 0.1;
         }
-        
+
 .hero-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -118,11 +117,11 @@ body {
             position: relative;
             z-index: 2;
         }
-        
+
 .hero-content {
             max-width: 8000px;
         }
-        
+
 .hero-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 3.5rem;
@@ -132,21 +131,21 @@ body {
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        
+
 .hero-description {
             font-size: 1.2rem;
             color: #EDF2F7;
             margin-bottom: 40px;
             line-height: 1.6;
         }
-        
+
 .hero-features {
             display: flex;
             gap: 30px;
             margin-bottom: 40px;
             flex-wrap: wrap;
         }
-        
+
 .feature-item {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -154,20 +153,20 @@ body {
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
 .feature-text {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
             font-weight: 600;
             color: #FFFFFF;
         }
-        
+
 .hero-buttons {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
-        
+
 .btn {
             padding: 16px 32px;
             border-radius: 8px;
@@ -182,103 +181,103 @@ body {
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
 .btn-primary {
             background: #E53E3E;
             color: #FFFFFF;
         }
-        
+
 .btn-primary:hover {
             background: #C53030;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(229, 62, 62, 0.3);
         }
-        
+
 .btn-secondary {
             background: transparent;
             color: #FFFFFF;
             border: 2px solid #FFFFFF;
         }
-        
+
 .btn-secondary:hover {
             background: #FFFFFF;
             color: #667eea;
             transform: translateY(-2px);
         }
-        
+
 .stats {
             margin-top: 40px;
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
+
 .stats-number {
             font-family: 'Montserrat', sans-serif;
             font-size: 2.5rem;
             font-weight: 800;
             color: #FFFFFF;
         }
-        
+
 .stats-text {
             font-size: 1rem;
             color: #EDF2F7;
             max-width: 200px;
         }
-        
+
         /* Адаптивность */
 @media (max-width: 768px) {
     .header-container {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
     .nav {
                 gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            
+
     .hero-title {
                 font-size: 2.5rem;
             }
-            
+
     .hero-description {
                 font-size: 1.1rem;
             }
-            
+
     .hero-buttons {
                 flex-direction: column;
             }
-            
+
     .btn {
                 width: 100%;
             }
-            
+
     .hero-features {
                 flex-direction: column;
             }
         }
-        
+
 @media (max-width: 480px) {
     .hero-title {
                 font-size: 2rem;
             }
-            
+
     .nav {
                 gap: 10px;
             }
-            
+
     .nav-link {
                 font-size: 12px;
             }
-            
+
     .stats {
                 flex-direction: column;
                 text-align: center;
             }
         }
-        
+
         /* Анимации */
 @keyframes fadeInUp {
     from {
@@ -290,31 +289,31 @@ body {
                 transform: translateY(0);
             }
         }
-        
+
 .hero-content > * {
             animation: fadeInUp 0.8s ease-out;
         }
-        
+
 .hero-title {
             animation-delay: 0.1s;
         }
-        
+
 .hero-description {
             animation-delay: 0.2s;
         }
-        
+
 .hero-features {
             animation-delay: 0.3s;
         }
-        
+
 .hero-buttons {
             animation-delay: 0.4s;
         }
-        
+
 .stats {
             animation-delay: 0.5s;
         }
-        
+
         /* Основное содержимое */
 .main-content {
             max-width: 1200px;

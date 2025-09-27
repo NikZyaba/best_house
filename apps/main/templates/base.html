@@ -1,69 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %} {% endblock title %}
-    <!-- Подключение папки "static" -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <!-- Подключение шрифтов -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
-          rel="stylesheet">
-    {% block head %}{% endblock %}
+  <meta charset="UTF-8">
+  <title>$Title$</title>
 </head>
 <body>
-<!-- Шапка -->
-<header class="header">
-    <div class="header-container">
-        <a href="/" class="logo"><img src="{% static 'img/besthouselogo.png' %}" alt="Бест Хаус - Промышленные полы"
-                                      width="150" height="40"></a>
-
-        <nav class="nav">
-            <a href="/" class="nav-link">Главная</a>
-            <a href="#" class="nav-link">Отзывы</a>
-            <a href="#" class="nav-link">Проекты</a>
-            <a href="#" class="nav-link">Блог</a>
-            <a href="#" class="nav-link">О нас</a>
-            <a href="#" class="nav-link">Контакты</a>
-            <a href="#" class="nav-link">Корзина</a>
-        </nav>
-
-        <div class="contact-info">Иван Петров</div>
-    </div>
-</header>
-
-<!-- Герой секция -->
-<section class="hero">
-    <div class="hero-container">
-        <div class="hero-content">
-            <h1 class="hero-title">Комплексные решения для Промышленных Полов</h1>
-
-            <p class="hero-description">
-                Полусухая стяжка, топливное и полимерное полы от ведущего производителя Сибири.
-                Работы и материалы под ключ с гарантией качества.
-            </p>
-
-
-            <div class="hero-buttons">
-                <a href="{% url 'main:get_consult' %}" class="btn btn-primary">Получить консультацию</a>
-                <a href="#calculation" class="btn btn-secondary">Рассчитать проект</a>
-            </div>
-
-            <div class="stats">
-                <div class="stats-number">500+</div>
-                <div class="stats-text">реализованных проектов по всей Сибири</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Основное содержимое страницы -->
-<main class="main-content">
-    {% block content %}
-    <!-- Сюда будет подставляться контент из дочерних шаблонов -->
-    {% endblock content %}
-</main>
-
+$END$
 </body>
 </html>

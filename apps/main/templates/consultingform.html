@@ -13,6 +13,7 @@
 
     <form method="post" class="cons-form">
         {% csrf_token %}
+        <p class="pers">Please provide us with your personal information, and our specialist will contact you shortly.<br><br></p>
 
         <!-- Поле buyer_name (Ваше имя) -->
         <div>
@@ -43,7 +44,8 @@
 
         <!-- КНОПКА ОТПРАВКИ (обязательно!) -->
         <button type="submit" class="btn btn-primary">Send Request</button>
-
+        <a href="{% url 'main:main' %}">Cancel<br><br></a>
+        <p class="pers">By clicking the button you accept with using your personal data</p>
     </form>
     <script>
         // Добавление класса loading при отправке формы

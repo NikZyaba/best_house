@@ -1,10 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/calculatingform.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+    <title>Calculate your project</title>
 </head>
 <body>
-$END$
+
+    <form method="post" class="cons-form">
+        {% csrf_token %}
+        <p class="pers">Please provide us with your personal information, and our specialist will contact you shortly.<br><br></p>
+
+        <!-- Поле buyer_name (Ваше имя) -->
+        <div>
+            <label for="{{ form.buyer_name.id_for_label }}">Your first name</label>
+            {{ form.buyer_name }}
+            {% if form.buyer_name.errors %}
+                <div class="error">{{ form.buyer_name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Поле phone_number (Ваш телефон) -->
+        <div>
+            <label for="{{ form.phone_number.id_for_label }}">Your phone</label>
+            {{ form.phone_number }}
+            {% if form.phone_number.errors %}
+                <div class="error">{{ form.phone_number.errors }}</div>
+            {% endif %}
+        </div>
+
+         <!-- Поле room_type (Тип комнаты) -->
+        <div>
+            <label for="{{ form.room_type.id_for_label }}">Room type</label>
+            {{ form.room_type }}
+            {% if form.room_type.errors %}
+            <div class="error">{{ form.room_type.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Поле room_type (Тип комнаты) -->
+        <div>
+            <label for="{{ form.room_area.id_for_label }}">Room area</label>
+            {{ form.room_area }}
+            {% if form.room_area.errors %}
+            <div class="error">{{ form.room_area.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Поле company_name (Название компании) -->
+        <div>
+            <label for="{{ form.company_name.id_for_label }}">Company name</label>
+            {{ form.company_name }}
+            {% if form.company_name.errors %}
+                <div class="error">{{ form.company_name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- КНОПКА ОТПРАВКИ -->
+        <button type="submit" class="btn btn-primary">Send Request</button>
+        <a href="{% url 'main:main' %}">Cancel<br><br></a>
+        <p class="pers">By clicking the button you accept with using your personal data</p>
+    </form>
+    <script>
+        // Добавление класса loading при отправке формы
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.cons-form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', function() {
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+            });
+        });
+
+        // Плавное появление ошибок
+        const errorElements = document.querySelectorAll('.error');
+        errorElements.forEach(error => {
+            error.style.opacity = '0';
+            error.style.transform = 'translateY(-10px)';
+
+            setTimeout(() => {
+                error.style.transition = 'all 0.3s ease';
+                error.style.opacity = '1';
+                error.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
 </body>
 </html>

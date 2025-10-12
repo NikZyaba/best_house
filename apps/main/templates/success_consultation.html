@@ -1,10 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/success_pages.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Consultation Request Sent Successfully</title>
 </head>
 <body>
-$END$
+    <div class="success-container">
+        <div class="success-card">
+            <!-- Анимированная иконка -->
+            <div class="success-icon">
+                <div class="checkmark-circle">
+                    <div class="checkmark"></div>
+                </div>
+            </div>
+
+            <!-- Заголовок и текст -->
+            <h1 class="success-title">Thank You!</h1>
+            <p class="success-message">
+                Your consultation request has been successfully sent. Our specialist will contact you shortly to discuss your project.
+            </p>
+
+            <!-- Детали запроса -->
+            <div class="request-details">
+                <div class="detail-item">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Name:</strong> {{ request_data.buyer_name }}</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-phone"></i>
+                    <span><strong>Phone:</strong> {{ request_data.phone_number }}</span>
+                </div>
+                {% if request_data.description %}
+                <div class="detail-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span><strong>Description:</strong> {{ request_data.description }}</span>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Время обработки -->
+            <div class="processing-info">
+                <i class="fas fa-clock"></i>
+                <span>We typically respond within 1-2 business hours</span>
+            </div>
+
+            <!-- Кнопки действий -->
+            <div class="action-buttons">
+                <a href="{% url 'main:main' %}" class="btn btn-primary">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </a>
+                <!-- Убрана проблемная ссылка -->
+            </div>
+
+            <!-- Контактная информация -->
+            <div class="contact-info">
+                <p>Need immediate assistance?</p>
+                <div class="contact-methods">
+                    <a href="tel:+1234567890" class="contact-link">
+                        <i class="fas fa-phone"></i>
+                        +1 (234) 567-890
+                    </a>
+                    <a href="mailto:info@example.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        info@example.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

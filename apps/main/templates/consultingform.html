@@ -1,3 +1,4 @@
+<!-- consultingform.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
         <!-- Поле phone_number (Ваш телефон) -->
         <div>
             <label for="{{ form.phone_number.id_for_label }}">Your phone</label>
-            {{ form.phone_number }} <!-- Здесь уже будет валидация и правильный input -->
+            {{ form.phone_number }}
             {% if form.phone_number.errors %}
                 <div class="error">{{ form.phone_number.errors }}</div>
             {% endif %}
@@ -36,19 +37,19 @@
         <!-- Поле description (Описание) -->
         <div>
             <label for="{{ form.description.id_for_label }}">Description</label>
-            {{ form.description }} <!-- Django подставит textarea с классом и placeholder -->
+            {{ form.description }}
             {% if form.description.errors %}
                 <div class="error">{{ form.description.errors }}</div>
             {% endif %}
         </div>
 
-        <!-- КНОПКА ОТПРАВКИ (обязательно!) -->
+        <!-- КНОПКА ОТПРАВКИ -->
         <button type="submit" class="btn btn-primary">Send Request</button>
         <a href="{% url 'main:main' %}">Cancel<br><br></a>
         <p class="pers">By clicking the button you accept with using your personal data</p>
     </form>
+
     <script>
-        // Добавление класса loading при отправке формы
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('.cons-form');
             const submitBtn = form.querySelector('button[type="submit"]');
@@ -59,7 +60,6 @@
             });
         });
 
-        // Плавное появление ошибок
         const errorElements = document.querySelectorAll('.error');
         errorElements.forEach(error => {
             error.style.opacity = '0';

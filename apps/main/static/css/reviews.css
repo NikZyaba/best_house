@@ -1,0 +1,254 @@
+/* reviews.css - Стили для страниц отзывов */
+
+/* Контейнер для страниц отзывов */
+.reviews-container {
+    max-width: 800px;
+    margin: 100px auto 60px;
+    padding: 0 20px;
+}
+
+/* Заголовки страниц */
+.reviews-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2D3748;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Стили для формы */
+.review-form {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Стили для полей формы */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #2D3748;
+    background: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Специфичные стили для textarea */
+.form-control textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Стили для select */
+.form-control select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232D3748'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+/* Кнопка отправки */
+.btn-submit {
+    width: 100%;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* Стили для страницы благодарности */
+.thank-you-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.thank-you-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.review-details {
+    text-align: left;
+    background: #F7FAFC;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 30px 0;
+}
+
+.review-detail {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.review-detail:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.review-detail strong {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #2D3748;
+    display: inline-block;
+    min-width: 120px;
+}
+
+.review-detail span {
+    color: #4A5568;
+}
+
+/* Стили для звезд рейтинга */
+.rating-stars {
+    color: #FFD700;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+/* Сообщения */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #C6F6D5;
+    color: #22543D;
+    border: 1px solid #9AE6B4;
+}
+
+.alert-error {
+    background: #FED7D7;
+    color: #742A2A;
+    border: 1px solid #FEB2B2;
+}
+
+.alert-warning {
+    background: #FEFCBF;
+    color: #744210;
+    border: 1px solid #FAF089;
+}
+
+/* Анимации */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.review-form,
+.thank-you-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .reviews-container {
+        margin: 80px auto 40px;
+        padding: 0 15px;
+    }
+
+    .reviews-title {
+        font-size: 2rem;
+    }
+
+    .review-form,
+    .thank-you-card {
+        padding: 30px 20px;
+    }
+
+    .review-details {
+        padding: 20px;
+    }
+
+    .review-detail {
+        display: block;
+    }
+
+    .review-detail strong {
+        display: block;
+        margin-bottom: 5px;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-title {
+        font-size: 1.75rem;
+    }
+
+    .thank-you-title {
+        font-size: 1.5rem;
+    }
+
+    .review-form,
+    .thank-you-card {
+        padding: 20px 15px;
+    }
+}

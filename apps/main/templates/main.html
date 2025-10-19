@@ -11,6 +11,30 @@
 {% endblock title %}
 
 {% block content %}
+<!-- Герой секция -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">Комплексные решения для Промышленных Полов</h1>
+
+            <p class="hero-description">
+                Полусухая стяжка, топливное и полимерное полы от ведущего производителя Сибири.
+                Работы и материалы под ключ с гарантией качества.
+            </p>
+
+
+            <div class="hero-buttons">
+                <a href="{% url 'main:get_consult' %}" class="btn btn-primary">Получить консультацию</a>
+                <a href="{% url 'main:calculate_project' %}" class="btn btn-secondary">Рассчитать проект</a>
+            </div>
+
+            <div class="stats">
+                <div class="stats-number">500+</div>
+                <div class="stats-text">реализованных проектов по всей Сибири</div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 {% endblock content %}

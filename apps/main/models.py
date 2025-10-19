@@ -27,3 +27,24 @@ class SaveDbCalculating(models.Model):
 
     def __str__(self):
         return f"{self.buyer_name} - {self.room_type} ({self.room_area}m²)"
+
+
+class SaveDbReview(models.Model):
+    RATE_CHOICES = [
+        (1, '1 звезда'),
+        (2, '2 звезды'),
+        (3, '3 звезды'),
+        (4, '4 звезды'),
+        (5, '5 звезд'),
+    ]
+
+    buyer_name = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=50, blank=True, default="")  # ИСПРАВЛЕНО
+    description = models.TextField(max_length=1000)  # ИСПРАВЛЕНО: убрано unique=True
+    rate = models.IntegerField(choices=RATE_CHOICES, default=5)  # ДОБАВЛЕН default
+
+    def __str__(self):
+        return f"{self.buyer_name} - {self.rate} звезд"
+
+    class Meta:
+        db_table = 'main_savedbreview'

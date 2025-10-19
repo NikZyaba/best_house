@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Спасибо за отзыв - Бест Хаус</title>
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock head %}
+
+{% block content %}
+<div class="reviews-container">
+    <div class="thank-you-card">
+        <h1 class="thank-you-title">
+            <i class="fas fa-check-circle"></i> Спасибо за ваш отзыв!
+        </h1>
+
+        <div class="review-details">
+            <div class="review-detail">
+                <strong>Имя:</strong>
+                <span>{{ buyer_name }}</span>
+            </div>
+            <div class="review-detail">
+                <strong>Телефон:</strong>
+                <span>{{ phone_number }}</span>
+            </div>
+            <div class="review-detail">
+                <strong>Оценка:</strong>
+                <span>{{ review_rate }}</span>
+                <span class="rating-stars">
+                    {% with ''|center:review_rate as range %}
+                    {% for _ in range %}⭐{% endfor %}
+                    {% endwith %}
+                </span>
+            </div>
+            <div class="review-detail">
+                <strong>Отзыв:</strong>
+                <span>{{ review_description }}</span>
+            </div>
+        </div>
+
+        <a href="{% url 'main:review_form' %}" class="btn-submit">
+            <i class="fas fa-edit"></i> Оставить еще один отзыв
+        </a>
+    </div>
+</div>
+{% endblock content %}

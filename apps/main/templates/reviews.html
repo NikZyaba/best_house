@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Отзывы - Бест Хаус</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    .reviews-hero {
+        background: linear-gradient(135deg, #2f579c 0%, #2D3748 100%);
+        padding: 120px 0 80px;
+        text-align: center;
+        color: white;
+    }
+
+    .reviews-hero h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+
+    .reviews-hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        opacity: 0.9;
+    }
+
+    .reviews-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .review-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-left: 4px solid #4CAF50;
+    }
+
+    .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .review-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-right: 15px;
+    }
+
+    .review-info h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: #2D3748;
+    }
+
+    .review-project {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .review-rating {
+        color: #FFD700;
+        margin-bottom: 15px;
+    }
+
+    .review-text {
+        line-height: 1.6;
+        color: #4A5568;
+        margin-bottom: 20px;
+    }
+
+    .review-date {
+        color: #999;
+        font-size: 0.9rem;
+        text-align: right;
+    }
+
+    .stats-section {
+        background: #F7FAFC;
+        border-radius: 15px;
+        padding: 40px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+    }
+
+    .stat-item h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #4CAF50;
+        margin-bottom: 10px;
+    }
+
+    .stat-item p {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .add-review-section {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .add-review-section h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #2D3748;
+    }
+
+    @media (max-width: 768px) {
+        .reviews-hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .reviews-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+{% endblock head %}
+
+{% block title %}
+<title>BestHouse|Промышленные полы</title>
+{% endblock title %}
+
+{% block content %}
+<!-- Герой секция для отзывов -->
+<section class="reviews-hero">
+    <div class="hero-container">
+        <h1>Отзывы наших клиентов</h1>
+        <p>Более 500 довольных клиентов по всей Сибири доверили нам свои проекты</p>
+    </div>
+</section>
+
+<div class="reviews-container">
+    <!-- Статистика -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h2>4.9/5</h2>
+                <p>Средняя оценка</p>
+            </div>
+            <div class="stat-item">
+                <h2>500+</h2>
+                <p>Положительных отзывов</p>
+            </div>
+            <div class="stat-item">
+                <h2>98%</h2>
+                <p>Рекомендуют нас</p>
+            </div>
+            <div class="stat-item">
+                <h2>24/7</h2>
+                <p>Поддержка клиентов</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сетка отзывов -->
+    <div class="reviews-grid">
+        <!-- Отзыв 1 -->
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar">АС</div>
+                <div class="review-info">
+                    <h3>Александр Смирнов</h3>
+                    <div class="review-project">Складской комплекс, 1500 м²</div>
+                </div>
+            </div>
+            <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="review-text">
+                Отличная работа! Выполнили полусухую стяжку на складе в срок.
+                Качество превзошло ожидания. Рекомендую как надежного подрядчика.
+            </p>
+            <div class="review-date">15 января 2024</div>
+        </div>
+
+        <!-- Отзыв 2 -->
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar">МП</div>
+                <div class="review-info">
+                    <h3>Мария Петрова</h3>
+                    <div class="review-project">Торговый центр, 800 м²</div>
+                </div>
+            </div>
+            <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="review-text">
+                Профессиональная команда, качественные материалы.
+                Полимерные полы в торговом центре выглядят идеально.
+                Спасибо за оперативность!
+            </p>
+            <div class="review-date">10 января 2024</div>
+        </div>
+
+        <!-- Отзыв 3 -->
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar">ДК</div>
+                <div class="review-info">
+                    <h3>Дмитрий Козлов</h3>
+                    <div class="review-project">Производственный цех, 2000 м²</div>
+                </div>
+            </div>
+            <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="review-text">
+                Работали в сложных условиях, но справились блестяще.
+                Топпинговые полы выдерживают интенсивные нагрузки.
+                Гарантия качества!
+            </p>
+            <div class="review-date">5 января 2024</div>
+        </div>
+
+        <!-- Отзыв 4 -->
+        <div class="review-card">
+            <div class="review-header">
+                <div class="review-avatar">ЕВ</div>
+                <div class="review-info">
+                    <h3>Елена Васнецова</h3>
+                    <div class="review-project">Офисное здание, 500 м²</div>
+                </div>
+            </div>
+            <div class="review-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="review-text">
+                Внимательное отношение к деталям, чистовая работа на высшем уровне.
+                Сделали даже больше, чем обещали. Буем сотрудничать снова!
+            </p>
+            <div class="review-date">28 декабря 2023</div>
+        </div>
+    </div>
+
+    <!-- Кнопка добавления отзыва -->
+    <section class="add-review-section">
+        <h2>Оставьте свой отзыв</h2>
+        <p>Поделитесь своим опытом работы с нами</p>
+        <a href="{% url 'main:review_form' %}" class="fas fa-edit">Написать отзыв</a>
+    </section>
+</div>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+{% endblock scripts %}

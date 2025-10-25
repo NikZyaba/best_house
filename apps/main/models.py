@@ -11,6 +11,8 @@ class SaveDbConsulting(models.Model):
 
     class Meta:
         db_table = 'main_savedbconsulting'
+        verbose_name = 'Consult'  # единственное число
+        verbose_name_plural = 'Consults'  # множественное число
 
 
 # models.py
@@ -24,6 +26,8 @@ class SaveDbCalculating(models.Model):
 
     class Meta:
         db_table = 'main_savedbcalculating'
+        verbose_name = "Calculating"
+        verbose_name_plural = "Calculates"
 
     def __str__(self):
         return f"{self.buyer_name} - {self.room_type} ({self.room_area}m²)"
@@ -48,3 +52,5 @@ class SaveDbReview(models.Model):
 
     class Meta:
         db_table = 'main_savedbreview'
+        verbose_name = "Rate"
+        verbose_name_plural = "Rates"

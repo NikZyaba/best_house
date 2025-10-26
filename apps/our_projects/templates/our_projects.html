@@ -1,17 +1,108 @@
 {% extends "base.html" %}
-
-
+{% load static %}
 
 {% block head %}
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BestHouse | Наши проекты</title>
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 {% endblock head %}
 
 {% block title %}
-<title>BestHouse|Наши проекты</title>
+<title>BestHouse | Наши проекты</title>
 {% endblock title %}
 
 {% block content %}
+<div class="projects-container">
+    <h1 class="projects-title">Наши проекты</h1>
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
+    <!-- Форма добавления нового проекта (только для staff) -->
+    {% if is_staff_user %}
+    <div class="project-form-section">
+        <div class="staff-badge">
+            <i class="fas fa-shield-alt"></i>
+            Режим администратора
+        </div>
+        <h2>Добавить новый проект</h2>
+        <form method="post" enctype="multipart/form-data" class="project-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.project_image.id_for_label }}">{{ form.project_image.label }}</label>
+                {{ form.project_image }}
+                {% if form.project_image.errors %}
+                    <div class="error">{{ form.project_image.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.project_description.id_for_label }}">{{ form.project_description.label }}</label>
+                {{ form.project_description }}
+                {% if form.project_description.errors %}
+                    <div class="error">{{ form.project_description.errors }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Добавить проект
+            </button>
+        </form>
 
+        <!-- Ссылка на отдельную страницу добавления -->
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="{% url 'our_projects:add_project' %}" class="btn btn-secondary">
+                <i class="fas fa-external-link-alt"></i> Добавить проект на отдельной странице
+            </a>
+        </div>
+    </div>
+    {% elif is_authenticated %}
+    <div class="info-message">
+        <i class="fas fa-info-circle"></i>
+        <p>Только администраторы могут добавлять новые проекты. Если у вас есть проект для добавления, свяжитесь с нами.</p>
+    </div>
+    {% else %}
+    <div class="info-message">
+        <i class="fas fa-info-circle"></i>
+        <p>Все пользователи могут просматривать наши проекты. Для добавления новых проектов требуется авторизация администратора.</p>
+    </div>
+    {% endif %}
+
+    <!-- Сетка проектов -->
+    <div class="projects-grid">
+        {% for project in projects %}
+            <div class="project-card">
+                <div class="project-image">
+                    {% if project.project_image %}
+                        <img src="{{ project.project_image.url }}" alt="{{ project.project_description|truncatewords:10 }}">
+                    {% else %}
+                        <div class="no-image">
+                            <i class="fas fa-image"></i>
+                            <span>No image</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="project-content">
+                    <p class="project-description">{{ project.project_description }}</p>
+                    <div class="project-meta">
+                        <span class="project-id">Проект #{{ project.id }}</span>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="no-projects">
+                <i class="fas fa-folder-open"></i>
+                <h3>Пока нет проектов</h3>
+                <p>{% if is_staff_user %}Добавьте первый проект используя форму выше{% else %}Проекты появятся позже{% endif %}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}

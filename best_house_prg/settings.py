@@ -237,3 +237,5 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': 3600.0,  # Каждый час
     },
 }
+
+LOGIN_URL = '/user/login/'

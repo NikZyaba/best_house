@@ -3,10 +3,87 @@ from .forms import ConsultingForm, CalculatingProjectForm, ReviewForm
 from .models import SaveDbConsulting, SaveDbCalculating, SaveDbReview
 from django.contrib import messages
 
+# Для обработки почты
+from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
+import logging
+
 
 def main(request):
     context = {}
     return render(request, "main.html", context)
+
+def about(request):
+    context = {}
+    return render(request, "about.html", context)
+
+
+logger = logging.getLogger(__name__)
+
+
+def contacts(request):
+    if request.method == 'POST':
+        # Получаем данные из формы
+        name = request.POST.get('name', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        email = request.POST.get('email', '').strip()
+        subject = request.POST.get('subject', '').strip()
+        message = request.POST.get('message', '').strip()
+
+        # Валидация обязательных полей
+        if not name or not phone or not message:
+            messages.error(request, "Пожалуйста, заполните все обязательные поля (отмечены *)")
+            return render(request, 'contacts.html')
+
+        # Формируем тему письма
+        email_subject = f"Новое сообщение с сайта BestHouse: {subject or 'Без темы'}"
+
+        # Формируем тело письма
+        email_body = f"""
+Новое сообщение с формы обратной связи:
+
+Имя: {name}
+Телефон: {phone}
+Email: {email or 'Не указан'}
+Тема: {subject or 'Не указана'}
+
+Сообщение:
+{message}
+
+---
+Это сообщение отправлено с сайта BestHouse.
+        """.strip()
+
+        try:
+            # Отправляем email
+            send_mail(
+                subject=email_subject,
+                message=email_body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.CONTACT_EMAIL],  # Email компании
+                fail_silently=False,
+            )
+
+            # Логируем успешную отправку
+            logger.info(f"Контактная форма отправлена: {name}, {phone}")
+
+            # Сообщение об успехе
+            messages.success(request, "Ваше сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.")
+            return redirect('main:contacts')
+
+        except BadHeaderError:
+            messages.error(request, "Обнаружен неверный заголовок. Пожалуйста, попробуйте еще раз.")
+        except Exception as e:
+            # Логируем ошибку
+            logger.error(f"Ошибка отправки контактной формы: {str(e)}")
+            messages.error(request,
+                           "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.")
+
+    return render(request, 'contacts.html')
+
+def contacts(request):
+    context = {}
+    return render(request, "contacts.html", context)
 
 
 def calculate_prj(request):
@@ -67,7 +144,7 @@ def get_consult(request):
             new_record.save()
 
             # Перенаправляем на страницу успеха
-            return redirect('main:success_consultation')  # Исправлено имя URL
+            return redirect('main:success_consultation')
     else:
         form = ConsultingForm()
 
@@ -174,7 +251,7 @@ def reviews_rating(request):
             "phone_number": "Ошибка"
         }
 
-    # Всегда очищаем сессию
+    # Очищаем сессию
     if "reviews_rating_data" in request.session:
         del request.session["reviews_rating_data"]
         request.session.modified = True

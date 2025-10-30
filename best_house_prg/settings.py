@@ -123,6 +123,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -206,6 +207,24 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@newssite.com')
 
+# Для тестирования без реального SMTP
+if DEBUG is True:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    # Или для файлового бэкенда:
+    # EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    # EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+else:
+    # Production настройки
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.yandex.ru'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = 'noreply@besthouse.ru'
+    EMAIL_HOST_PASSWORD = 'your-password'
+    DEFAULT_FROM_EMAIL = 'noreply@besthouse.ru'
+    CONTACT_EMAIL = 'info@besthouse.ru'
+
+
 # Celery настройки (опционально)
 CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://localhost:6379/0')
@@ -213,6 +232,7 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT = ['json']
+
 
 # Celery Beat настройки для периодических задач
 CELERY_BEAT_SCHEDULE = {
@@ -239,3 +259,5 @@ CELERY_BEAT_SCHEDULE = {
 }
 
 LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/'  # Куда перенаправлять после входа
+LOGOUT_REDIRECT_URL = '/'  # Куда перенаправлять после выхода

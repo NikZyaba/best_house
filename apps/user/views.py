@@ -15,7 +15,7 @@ def register(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'user/register.html', {'form': form})
-    
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -30,38 +30,31 @@ def login_view(request):
 
 
 @login_required
-def profile_views(request):
-    return render(request, 'user/profile.html', {'user': request.user})
-
+def account_details(request):
+    return render(request, 'user/account_details.html', {'user': request.user})
 
 @login_required
-def account_details(request):
-    user = CustomUser.objects.get(id=request.user.id)
-    return render(request, 'user/partials/account_details.html',
-                  {'user': user})
-
+def profile_views(request):
+    return render(request, 'user/profile.html', {'user': request.user})
 
 @login_required
 def edit_account_details(request):
     form = CustomUserUpdateForm(instance=request.user)
-    return render(request, 'user/partials/edit_account_details.html', 
-                  {'user': request.user, 'form': form})
-
+    return render(request, 'user/edit_account_details.html', {'user': request.user, 'form': form})
 
 @login_required
 def update_account_details(request):
     if request.method == 'POST':
         form = CustomUserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.clean()  
-            user.save()
-            return render(request, 'user/partials/account_details.html', {'user': user})
+            user = form.save()
+            # После сохранения возвращаемся на страницу профиля
+            return redirect('user:profile')
         else:
-            return render(request, 'user/partials/edit_account_details.html', {'user': request.user, 'form': form})
-    return render(request, 'user/partials/account_details.html', {'user': request.user})
-     
-       
+            return render(request, 'user/edit_account_details.html', {'user': request.user, 'form': form})
+    return redirect('user:profile')
+
+
 def logout_view(request):
     logout(request)
-    return redirect('user:register')
+    return redirect('main:main')

@@ -4,7 +4,11 @@ from . import views
 app_name = "main"
 
 urlpatterns = [
+    # Основные
     path('', views.main, name='main'),
+    path('about/', views.about, name='about'),  # О нас
+    path('contacts/', views.contacts, name='contacts'),  # Контакты
+    # Формы консультаций и расчета проекта
     path('get_consult', views.get_consult, name="get_consult"),
     path('calculate/', views.calculate_prj, name='calculate_project'),
     path('successconsulting/', views.success_consultation, name='success_consultation'),

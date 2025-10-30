@@ -1,20 +1,87 @@
-{% extends 'user/base.html' %}
+{% extends 'base.html' %}
 
-{% block title %}Your Profile{% endblock %}
+{% block title %}Ваш Профиль - BestHouse{% endblock %}
 
 {% block content %}
-    <h1>Hi, {{ request.user.first_name|upper }} {{ request.user.last_name|upper }}</h1>
-    <div class="profile-section">
-        <h2>Account Details</h2>
-        <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
-        <p>{{ request.user.email }}</p>
-        <p>{{ request.user.country|default:"Not specified" }}</p>
-        <button hx-get="{% url 'user:edit_account_details' %}" 
-                hx-target="#account-details-content" 
-                hx-swap="innerHTML">
-            Edit
-        </button>
-        <div id="account-details-content"></div>
+<div class="user-container profile-page">
+    <div class="user-auth-card">
+        <h1>Привет, {{ user.first_name }} {{ user.last_name }}</h1>
+
+        <div class="profile-section">
+            <h2>Информация профиля</h2>
+
+            <!-- Основная информация -->
+            <div class="profile-info">
+                <div class="info-item">
+                    <strong>Имя:</strong>
+                    <span>{{ user.first_name }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Фамилия:</strong>
+                    <span>{{ user.last_name }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Email:</strong>
+                    <span class="email-field">{{ user.email }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Телефон:</strong>
+                    <span>{{ user.phone|default:"Не указан" }}</span>
+                </div>
+            </div>
+
+            <!-- Адресная информация -->
+            <div class="address-section">
+                <h3>Адрес</h3>
+                {% if user.address_1 or user.city or user.country %}
+                <div class="info-item">
+                    <strong>Адрес:</strong>
+                    <span>
+                        {% if user.address_1 %}{{ user.address_1 }}{% endif %}
+                        {% if user.address_2 %}, {{ user.address_2 }}{% endif %}
+                    </span>
+                </div>
+                <div class="info-item">
+                    <strong>Город:</strong>
+                    <span>{{ user.city|default:"Не указан" }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Регион:</strong>
+                    <span>{{ user.province|default:"Не указан" }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Почтовый индекс:</strong>
+                    <span>{{ user.postal_code|default:"Не указан" }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Страна:</strong>
+                    <span>{{ user.country|default:"Не указана" }}</span>
+                </div>
+                {% else %}
+                <div class="info-item">
+                    <strong>Адрес:</strong>
+                    <em>Адресная информация не указана</em>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Одна кнопка редактирования для всего -->
+            <div class="button-container">
+                <button class="btn-primary"
+                        hx-get="{% url 'user:edit_account_details' %}"
+                        hx-target="#account-details-content"
+                        hx-swap="innerHTML">
+                    ✏️ Редактировать профиль
+                </button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{% url 'user:logout' %}" class="btn-secondary">Выйти</a>
+        </div>
     </div>
-    <a href="{% url 'user:logout' %}" class="link">Log Out</a>
+
+    <!-- Контейнер для формы редактирования ВНЕ карточки -->
+    <div id="account-details-content"></div>
+</div>
 {% endblock %}

@@ -1,0 +1,653 @@
+/* User Pages Styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Контейнер для страниц пользователя */
+.user-container {
+    max-width: 700px;
+    margin: 120px auto 60px;
+    padding: 0 20px;
+}
+
+.user-auth-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.6s ease-out;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Заголовки */
+.user-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2D3748;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.3;
+}
+
+.user-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.user-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+}
+
+.user-container h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4A5568;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Стили для профиля */
+.profile-section {
+    background: rgba(248, 249, 250, 0.8);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border-left: 4px solid #667eea;
+    word-wrap: break-word;
+}
+
+.profile-info,
+.address-section {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #E2E8F0;
+    word-wrap: break-word;
+}
+
+.info-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item strong {
+    min-width: 140px;
+    max-width: 140px;
+    color: #2D3748;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.info-item span {
+    flex: 1;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    color: #4A5568;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.4;
+}
+
+.info-item em {
+    color: #718096;
+    font-style: italic;
+    flex: 1;
+}
+
+/* Особые стили для email */
+.info-item .email-field {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-size: 14px;
+}
+
+/* Формы - общие стили */
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #2D3748;
+    background: #FFFFFF;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: #A0AEC0;
+    font-size: 14px;
+}
+
+/* Чекбоксы */
+.checkbox-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.checkbox-form input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #E2E8F0;
+    border-radius: 4px;
+    background: #FFFFFF;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.checkbox-form input[type="checkbox"]:checked {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.checkbox-form input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-form label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #4A5568;
+    line-height: 1.4;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* Кнопки */
+.user-container button,
+.user-container .btn {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 120px;
+    min-height: 48px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.user-container .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.user-container .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.user-container .btn-secondary {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+    width: auto;
+}
+
+.user-container .btn-secondary:hover {
+    background: #667eea;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+/* Ссылки */
+.user-container .link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    margin-top: 18px;
+    transition: color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.user-container .link:hover {
+    color: #5a6fd8;
+    text-decoration: underline;
+}
+
+/* Контейнер кнопок */
+.button-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.button-container button {
+    flex: 1;
+    min-width: 110px;
+}
+
+/* Форма редактирования */
+.edit-form-container {
+    background: #F7FAFC;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 2px solid #667eea;
+    word-wrap: break-word;
+}
+
+.edit-form-container h3 {
+    color: #2D3748;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+}
+
+.form-section {
+    margin-bottom: 25px;
+    padding: 18px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+}
+
+.form-section h4 {
+    color: #667eea;
+    margin-bottom: 12px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 8px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Address Box стили */
+.address-box {
+    background: #F7FAFC;
+    padding: 25px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #667eea;
+    word-wrap: break-word;
+}
+
+.default-address {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #2D3748;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+}
+
+.address-box p {
+    margin-bottom: 8px;
+    color: #4A5568;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+}
+
+.address-box p:last-child {
+    margin-bottom: 0;
+}
+
+.address-box strong {
+    color: #2D3748;
+    font-weight: 600;
+}
+
+/* Ошибки */
+.error {
+    color: #E53E3E;
+    font-size: 13px;
+    margin-top: 4px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+}
+
+.errorlist li {
+    color: #E53E3E;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Стили для страницы логина */
+.login-page .user-container {
+    max-width: 450px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* HTMX анимации */
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.htmx-request .htmx-indicator {
+    opacity: 1;
+}
+
+.htmx-request.htmx-indicator {
+    opacity: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .user-container {
+        margin: 100px auto 40px;
+        padding: 0 15px;
+        max-width: 95%;
+    }
+
+    .user-auth-card {
+        padding: 30px 20px;
+    }
+
+    .user-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .user-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .user-container h3 {
+        font-size: 1.1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button-container button {
+        width: 100%;
+    }
+
+    .info-item {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+
+    .info-item strong {
+        min-width: auto;
+        max-width: none;
+        font-size: 13px;
+    }
+
+    .info-item span {
+        width: 100%;
+    }
+
+    .profile-section {
+        padding: 20px;
+    }
+
+    .profile-info,
+    .address-section {
+        padding: 15px;
+    }
+
+    .address-box {
+        padding: 20px;
+    }
+
+    .edit-form-container {
+        padding: 20px;
+    }
+
+    .form-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-auth-card {
+        padding: 25px 15px;
+    }
+
+    .user-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .user-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .profile-section {
+        padding: 15px;
+    }
+
+    .profile-info,
+    .address-section {
+        padding: 12px;
+    }
+
+    .info-item {
+        padding: 10px 0;
+    }
+
+    .form-group input {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    .address-box {
+        padding: 15px;
+    }
+
+    .edit-form-container {
+        padding: 15px;
+    }
+
+    .form-section {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .user-container {
+        padding: 0 10px;
+    }
+
+    .user-auth-card {
+        padding: 20px 12px;
+    }
+
+    .user-container h1 {
+        font-size: 1.4rem;
+    }
+
+    .info-item strong {
+        font-size: 12px;
+    }
+
+    .info-item span {
+        font-size: 13px;
+    }
+
+    .form-group input {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+}
+
+/* Специфические стили для страницы профиля */
+.profile-page .user-container {
+    max-width: 650px;
+}
+
+/* Специфические стили для страниц аутентификации */
+.auth-page .user-container {
+    max-width: 500px;
+}
+
+/* Утилитарные классы */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+/* Состояния загрузки */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

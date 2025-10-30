@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BestHouse | О нас</title>
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock head %}
+
+{% block title %}
+<title>BestHouse | О компании</title>
+{% endblock title %}
+
+{% block content %}
+<div class="about-container">
+    <!-- Герой секция -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1 class="about-title">О компании BestHouse</h1>
+            <p class="about-subtitle">Более 10 лет создаем надежные промышленные полы для бизнеса</p>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Наша миссия</h2>
+                <p>Мы предоставляем комплексные решения для промышленных полов, сочетающие в себе долговечность, 
+                   надежность и современные технологии. Наша работа - это фундамент для успеха вашего бизнеса.</p>
+                
+                <h3>Почему выбирают нас</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Качество</h4>
+                        <p>Используем только проверенные материалы и технологии</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Сроки</h4>
+                        <p>Соблюдаем оговоренные сроки выполнения работ</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Гарантия</h4>
+                        <p>Предоставляем гарантию на все виды выполненных работ</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Опыт</h4>
+                        <p>Более 10 лет успешной работы на рынке</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="{% static 'img/about-team.jpg' %}" alt="Наша команда" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-count="500">100</div>
+                <div class="stat-label">Выполненных проектов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="10">10</div>
+                <div class="stat-label">Лет опыта</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="50">1000</div>
+                <div class="stat-label">Сотрудников</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="100">90</div>
+                <div class="stat-label">Довольных клиентов</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Технологии -->
+    <section class="tech-section">
+        <div class="section-header">
+            <h2>Наши технологии</h2>
+            <p>Используем современные материалы и оборудование</p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Промышленные наливные полы</h3>
+                <p>Беcшовные покрытия для производственных помещений</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-industry"></i>
+                <h3>Бетонные полы</h3>
+                <p>Прочные и износостойкие решения для складов</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-tint"></i>
+                <h3>Влагостойкие покрытия</h3>
+                <p>Защита от влаги и химических воздействий</p>
+            </div>
+            <div class="tech-card">
+                <i class="fas fa-temperature-high"></i>
+                <h3>Термостойкие полы</h3>
+                <p>Устойчивость к перепадам температур</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Готовы начать проект?</h2>
+            <p>Свяжитесь с нами для бесплатной консультации</p>
+            <div class="cta-buttons">
+                <a href="{% url 'main:get_consult' %}" class="btn btn-primary">
+                    <i class="fas fa-phone"></i> Получить консультацию
+                </a>
+                <a href="{% url 'our_projects:our_projects' %}" class="btn btn-secondary">
+                    <i class="fas fa-images"></i> Наши проекты
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+// Анимация счетчиков
+document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200;
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(updateCount, 1);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        // Запускаем анимацию при прокрутке
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(counter);
+    });
+});
+</script>
+{% endblock scripts %}

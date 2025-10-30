@@ -1,0 +1,460 @@
+/* contacts.css - Стили для страницы контактов */
+
+.contacts-container {
+    margin-top: 80px;
+}
+
+/* Герой секция */
+.contacts-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 120px 0 80px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.contacts-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="0,0 1000,100 1000,0"/></svg>');
+    background-size: cover;
+}
+
+.contacts-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.contacts-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.contacts-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Основной контент */
+.contacts-section {
+    padding: 80px 0;
+    background: #FFFFFF;
+}
+
+.contacts-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+/* Контактная информация */
+.contact-info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 40px;
+}
+
+.contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    background: #F7FAFC;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.contact-details h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 8px;
+}
+
+.contact-details p {
+    color: #4A5568;
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+.contact-details small {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+/* Форма обратной связи */
+.contact-form-section {
+    background: #F7FAFC;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #E2E8F0;
+}
+
+.contact-form-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 10px;
+}
+
+.contact-form-section p {
+    color: #718096;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 14px 16px;
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #2D3748;
+    background: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232D3748'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Карта */
+.map-section {
+    padding: 80px 0;
+    background: #FFFFFF;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.section-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 15px;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: #718096;
+}
+
+.map-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.map-placeholder {
+    background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+    padding: 80px 40px;
+    border-radius: 16px;
+    text-align: center;
+    border: 2px dashed #CBD5E0;
+}
+
+.map-placeholder i {
+    font-size: 4rem;
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.map-placeholder h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 15px;
+}
+
+.map-placeholder p {
+    color: #718096;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.map-actions {
+    margin-top: 30px;
+}
+
+/* Дополнительная информация */
+.info-section {
+    padding: 80px 0;
+    background: #F7FAFC;
+}
+
+.info-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.info-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #E2E8F0;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.info-card i {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 15px;
+}
+
+.info-card p {
+    color: #718096;
+    line-height: 1.6;
+}
+
+/* CTA секция */
+.cta-section {
+    background: linear-gradient(135deg, #E53E3E 0%, #C53030 100%);
+    padding: 80px 0;
+    color: white;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cta-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.cta-phone {
+    margin-bottom: 40px;
+}
+
+.cta-phone i {
+    font-size: 2rem;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.phone-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.phone-number:hover {
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .contacts-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contacts-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contacts-hero {
+        padding: 100px 0 60px;
+    }
+
+    .contacts-title {
+        font-size: 2.3rem;
+    }
+
+    .contacts-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-section {
+        padding: 30px 25px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .phone-number {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacts-title {
+        font-size: 2rem;
+    }
+
+    .contact-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .contact-icon {
+        align-self: center;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-placeholder {
+        padding: 60px 20px;
+    }
+}

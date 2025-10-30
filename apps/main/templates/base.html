@@ -7,6 +7,8 @@
     <!-- Подключение папки "static" -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <!-- Подключение шрифтов -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet">
@@ -23,13 +25,19 @@
             <a href="/" class="nav-link">Главная</a>
             <a href="{% url 'main:reviews' %}" class="nav-link">Отзывы</a>
             <a href="{% url 'our_projects:our_projects' %}" class="nav-link">Проекты</a>
-            <a href="#" class="nav-link">Блог</a>
-            <a href="#" class="nav-link">О нас</a>
-            <a href="#" class="nav-link">Контакты</a>
-            <a href="#" class="nav-link">Корзина</a>
+            <a href="{% url 'main:about' %}" class="nav-link">О нас</a>
+            <a href="{% url 'main:contacts' %}" class="nav-link">Контакты</a>
         </nav>
 
-        <div class="contact-info">Иван Петров</div>
+         <div class="contact-info">
+            {% if user.is_authenticated %}
+                <!-- Показать имя пользователя и кнопку выхода -->
+                <span>{{ user.first_name.upper }} |</span>
+                <a href="{% url 'user:logout' %}" class="nav-link">Выйти</a>
+            {% else %}
+                <!-- Показать кнопку входа -->
+                <a href="{% url 'user:login' %}" class="nav-link">Войти</a>
+            {% endif %}
     </div>
 </header>
 

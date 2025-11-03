@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class SaveDbConsulting(models.Model):
     buyer_name = models.CharField(max_length=50, unique=False)
-    phone_number = models.CharField(max_length=50, unique=True)
+    phone_number = models.CharField(max_length=50, unique=False)
     description = models.CharField(max_length=1000, unique=False)
 
     def __str__(self):
